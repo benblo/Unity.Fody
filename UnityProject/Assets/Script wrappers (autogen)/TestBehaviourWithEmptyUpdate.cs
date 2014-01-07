@@ -1,0 +1,1 @@
+public class TestBehaviourWithEmptyUpdate : LibraryToWeave.TestBehaviourWithEmptyUpdate {}

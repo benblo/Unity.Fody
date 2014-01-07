@@ -1,0 +1,1 @@
+public class TestBehaviourWithBaseUpdate : LibraryToWeave.TestBehaviourWithBaseUpdate {}
