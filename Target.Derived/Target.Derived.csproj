@@ -37,9 +37,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectMonoBehaviour.cs" />
-    <Compile Include="DerivedMonoBehaviour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\TestBehaviourWithBaseUpdate.cs" />
+    <Compile Include="Scripts\TestBehaviourWithEmptyUpdate.cs" />
+    <Compile Include="Scripts\TestBehaviourWithNoUpdate.cs" />
+    <Compile Include="Scripts\TestBehaviourWithUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibraryToWeave">
-      <HintPath>..\LibraryToWeave\bin\Debug\LibraryToWeave.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\packages\Fody.1.19.1.0\Mono.Cecil.dll</HintPath>
     </Reference>

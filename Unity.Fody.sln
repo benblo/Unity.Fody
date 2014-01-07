@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weavers", "Weavers\Weavers.csproj", "{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryToWeave", "LibraryToWeave\LibraryToWeave.csproj", "{A5B22942-FD1C-4386-A0BD-91E57731414D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Base", "Target.Base\Target.Base.csproj", "{7D47FC9F-BAA1-4254-8423-CF6A90C2470F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Derived", "Target.Derived\Target.Derived.csproj", "{B7F97216-EA24-4A07-A7C7-CDAB901623AD}"
@@ -22,10 +20,6 @@ Global
 		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5B22942-FD1C-4386-A0BD-91E57731414D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5B22942-FD1C-4386-A0BD-91E57731414D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5B22942-FD1C-4386-A0BD-91E57731414D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5B22942-FD1C-4386-A0BD-91E57731414D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D47FC9F-BAA1-4254-8423-CF6A90C2470F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D47FC9F-BAA1-4254-8423-CF6A90C2470F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D47FC9F-BAA1-4254-8423-CF6A90C2470F}.Release|Any CPU.ActiveCfg = Release|Any CPU

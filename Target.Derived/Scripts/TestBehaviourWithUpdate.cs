@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Target.Derived
 {
-	public class DerivedMonoBehaviour : Base.BaseMonoBehaviour
+	public class TestBehaviourWithUpdate : Base.BaseMonoBehaviour
 	{
 		protected override void Start()
 		{

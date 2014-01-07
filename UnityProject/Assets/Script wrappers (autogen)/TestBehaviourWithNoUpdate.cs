@@ -1,1 +1,1 @@
-public class TestBehaviourWithNoUpdate : LibraryToWeave.TestBehaviourWithNoUpdate {}
+public class TestBehaviourWithNoUpdate : Target.Derived.TestBehaviourWithNoUpdate {}
