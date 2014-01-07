@@ -1,0 +1,1 @@
+public class DerivedMonoBehaviour : Target.Derived.DerivedMonoBehaviour {}
