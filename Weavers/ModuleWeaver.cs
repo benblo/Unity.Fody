@@ -33,6 +33,7 @@ namespace Weavers
 
 		const string BaseMonoBehaviour = "BaseMonoBehaviour";
 		const string BaseMonoBehaviourFull = "Target.Base.BaseMonoBehaviour";
+		const string BaseModuleName = "Target.Base";
 
 		const string outputPath = @"UnityProject\Assets\";
 		const string outputDllPath = outputPath + @"Script DLLs\";
@@ -40,42 +41,51 @@ namespace Weavers
 
 		public void Execute()
 		{
-			TypeReference baseTypeReference;
-			if (!ModuleDefinition.TryGetTypeReference(BaseMonoBehaviourFull, out baseTypeReference))
+			if (ModuleDefinition.Name == BaseModuleName + ".dll")
 			{
-				LogWarning("ERROR: cannot find " + BaseMonoBehaviour);
+				LogInfo("patching base module " + ModuleDefinition);
+				executeBase(ModuleDefinition);
+			}
+			else
+			{
+				LogInfo("patching derived module " + ModuleDefinition);
+				executeDerived(ModuleDefinition);
+			}
+		}
+		void executeBase( ModuleDefinition _module )
+		{
+			TypeDefinition baseTypeDefinition = _module.Types.First(t => t.Name == BaseMonoBehaviour);
+			removeUnityMethods(baseTypeDefinition);
+			removeReferenceToMscorlib40(_module);
+
+			AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
+		}
+		void executeDerived( ModuleDefinition _module )
+		{
+			TypeReference baseTypeReference;
+			if (!_module.TryGetTypeReference(BaseMonoBehaviourFull, out baseTypeReference))
+			{
+				LogError("ERROR: cannot find " + BaseMonoBehaviour);
 				return;
 			}
 
-			// my module
+			removeUnityMethodReferences(_module, baseTypeReference);
+			removeReferenceToMscorlib40(_module);
+
+			typesToWrap.Clear();
+
+			foreach (var type in _module.Types)
 			{
-				removeUnityMethodReferences(ModuleDefinition, baseTypeReference);
-				removeReferenceToMscorlib40(ModuleDefinition);
-
-				typesToWrap.Clear();
-
-				foreach (var type in ModuleDefinition.Types)
+				if (type.BaseType == baseTypeReference)
 				{
-					if (type.BaseType == baseTypeReference)
-					{
-						processDerivedMonoBehaviour(type);
-						continue;
-					}
+					processDerivedMonoBehaviour(type);
+					continue;
 				}
-
-				generateWrappers();
 			}
 
-			// base module
-			TypeDefinition baseTypeDefinition = baseTypeReference.Resolve();
-			ModuleDefinition baseModule = baseTypeDefinition.Module;
-			{
-				removeUnityMethods(baseTypeDefinition);
-				removeReferenceToMscorlib40(baseModule);
-			}
+			generateWrappers();
 
-			baseModule.Assembly.Write(SolutionDirectoryPath + outputDllPath + baseModule);
-			ModuleDefinition.Assembly.Write(SolutionDirectoryPath + outputDllPath + ModuleDefinition);
+			AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
 		}
 		void removeUnityMethodReferences( ModuleDefinition _module, TypeReference _baseType )
 		{

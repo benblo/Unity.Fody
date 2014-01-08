@@ -4,10 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weavers", "Weavers\Weavers.csproj", "{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Base", "Target.Base\Target.Base.csproj", "{7D47FC9F-BAA1-4254-8423-CF6A90C2470F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D} = {D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Derived", "Target.Derived\Target.Derived.csproj", "{B7F97216-EA24-4A07-A7C7-CDAB901623AD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7D47FC9F-BAA1-4254-8423-CF6A90C2470F} = {7D47FC9F-BAA1-4254-8423-CF6A90C2470F}
+		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D} = {D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}
 	EndProjectSection
 EndProject
 Global
