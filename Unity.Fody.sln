@@ -10,6 +10,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Base", "Target.Base\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Target.Derived", "Target.Derived\Target.Derived.csproj", "{B7F97216-EA24-4A07-A7C7-CDAB901623AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.UnityProject.CSharp", "UnityProject\UnityVS.UnityProject.CSharp.csproj", "{3514E80D-D975-03C0-3350-1935D6E531E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7F97216-EA24-4A07-A7C7-CDAB901623AD} = {B7F97216-EA24-4A07-A7C7-CDAB901623AD}
+		{7D47FC9F-BAA1-4254-8423-CF6A90C2470F} = {7D47FC9F-BAA1-4254-8423-CF6A90C2470F}
+		{D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D} = {D9A8B4A5-B8B0-4C22-9ACD-3C084B119C1D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +35,10 @@ Global
 		{B7F97216-EA24-4A07-A7C7-CDAB901623AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7F97216-EA24-4A07-A7C7-CDAB901623AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7F97216-EA24-4A07-A7C7-CDAB901623AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3514E80D-D975-03C0-3350-1935D6E531E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3514E80D-D975-03C0-3350-1935D6E531E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3514E80D-D975-03C0-3350-1935D6E531E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3514E80D-D975-03C0-3350-1935D6E531E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
