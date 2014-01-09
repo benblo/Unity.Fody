@@ -10,7 +10,7 @@ namespace Target.Derived
 		{
 			base.Start();
 
-			Debug.Log("DerivedMonoBehaviour.Start");
+			Debug.Log("TestBehaviourWithUpdate.Start");
 		}
 
 		public int count;
