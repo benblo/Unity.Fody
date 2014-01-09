@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using Mono.Cecil.Mdb;
+using Mono.Cecil.Pdb;
 
 namespace Weavers
 {
@@ -30,6 +32,7 @@ namespace Weavers
 		public string ProjectDirectoryPath { get; set; }
 		public string AddinDirectoryPath { get; set; }
 		public string SolutionDirectoryPath { get; set; }
+		public IAssemblyResolver AssemblyResolver { get; set; }
 
 		const string BaseMonoBehaviour = "BaseMonoBehaviour";
 		const string BaseMonoBehaviourFull = "Target.Base.BaseMonoBehaviour";
@@ -58,7 +61,7 @@ namespace Weavers
 			removeUnityMethods(baseTypeDefinition);
 			removeReferenceToMscorlib40(_module);
 
-			AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
+			saveToUnityProject(_module);
 		}
 		void executeDerived( ModuleDefinition _module )
 		{
@@ -85,7 +88,25 @@ namespace Weavers
 
 			generateWrappers();
 
-			AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
+			saveToUnityProject(_module);
+		}
+		void saveToUnityProject( ModuleDefinition _module )
+		{
+			// change the destination output, so the file is not changed locally
+			InnerWeaver weaver = (InnerWeaver)AssemblyResolver;
+			weaver.AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
+
+			// TODO: pdb2mdb here?
+
+			//// write to a custom path
+			//InnerWeaver weaver = (InnerWeaver)AssemblyResolver;
+			//weaver.AssemblyFilePath = SolutionDirectoryPath + outputDllPath + _module;
+			//weaver.WriteModule();
+
+			//// read again (discard our changes locally)
+			//InnerWeaver weaver = (InnerWeaver)AssemblyResolver;
+			//weaver.AssemblyFilePath = AssemblyFilePath;
+			//weaver.ReadModule();
 		}
 		void removeUnityMethodReferences( ModuleDefinition _module, TypeReference _baseType )
 		{
